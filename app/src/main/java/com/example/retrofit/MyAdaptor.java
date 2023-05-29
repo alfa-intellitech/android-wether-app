@@ -1,0 +1,54 @@
+package com.example.retrofit;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class MyAdaptor extends RecyclerView.Adapter<MyViewHolder> {
+
+    Context context;
+    ArrayList<DataModel> dataModels;
+
+    public MyAdaptor(Context context, ArrayList<DataModel> dataModels) {
+        this.context = context;
+        this.dataModels = dataModels;
+    }
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.citys, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        final DataModel data = dataModels.get(position);
+
+        holder.cityname.setText(dataModels.get(position).getCityname());
+        holder.citytemp.setText(dataModels.get(position).getCitytemp());
+        holder.cityname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, MainActivity.class);
+                intent.putExtra("yourcity",data.getCityname());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
+    }
+
+
+
+    @Override
+    public int getItemCount() {
+        return dataModels.size();
+    }
+}

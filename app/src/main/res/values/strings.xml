@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="weather">WEATHER FORECAST</string>
+    <string name="yourcity">Enter City</string>
+    <string name="temprature"> °c</string>
+    <string name="date">Date</string>
+    <string name="results">Weather Results</string>
+    <string name="feel">Feel like</string>
+    <string name="min">Min. temp</string>
+    <string name="mex">Mex. temp</string>
+    <string name="wind">Wind</string>
+    <string name="warning">please enter your city.......</string>
+    <string name="list">your save list</string>
+
+</resources>
