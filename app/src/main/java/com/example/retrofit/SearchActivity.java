@@ -64,12 +64,7 @@ public class SearchActivity extends AppCompatActivity {
         updatedata();
 
     }
-    protected void onResume() {
-        super.onResume();
-        // Call the method in the second activity
-        MainActivity mainActivity = new MainActivity();
-        mainActivity.dataupdate();
-    }
+  
     private ArrayList<DataModel> loadArrayList() {
 
         String json = sharedPreferences.getString("list", null);
