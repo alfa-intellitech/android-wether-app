@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Retrofit"
+rootProject.name = "Weather_App"
 include ':app'

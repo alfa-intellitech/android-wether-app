@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <LinearLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -48,54 +48,72 @@
             android:id="@+id/five"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/trwhite"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="8dp"
             android:layout_marginHorizontal="10dp"
-
+            android:backgroundTint="@color/trwhite"
             >
 
             <LinearLayout
-                android:id="@+id/rlone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                >
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:paddingHorizontal="10dp">
 
-                <EditText
-                    android:id="@+id/etyourcity"
+                <LinearLayout
+                    android:id="@+id/rlone"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:baselineAligned="true"
-                    android:ems="10"
-                    android:hint="@string/yourcity"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp">
+
+                    <EditText
+                        android:id="@+id/etyourcity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:baselineAligned="true"
+                        android:ems="10"
+                        android:hint="@string/yourcity"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
 
 
+                        />
 
-                    />
+                    <ImageView
+                        android:id="@+id/search"
+                        android:layout_width="50dp"
+                        android:layout_height="37dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/search" />
 
-                <ImageView
-                    android:id="@+id/search"
-                    android:layout_width="50dp"
-                    android:layout_height="37dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/search"
-                    />
-                <ImageView
-                    android:id="@+id/addbutton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/unlike"
-                    />
+                    <ImageView
+                        android:id="@+id/addbutton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/unlike" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_place"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="20dp" />
+
+                </LinearLayout>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
