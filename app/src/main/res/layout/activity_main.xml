@@ -1,418 +1,430 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-<LinearLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hot"
+    android:background="@drawable/orange_greadient"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
-        android:id="@+id/llone"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/lltwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvweather"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/weather"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/five"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            android:layout_marginHorizontal="10dp"
-            android:backgroundTint="@color/trwhite"
-            >
+            android:orientation="vertical">
+
 
             <LinearLayout
+                android:id="@+id/llone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="10dp"
-                android:paddingHorizontal="10dp">
+
+                >
 
                 <LinearLayout
-                    android:id="@+id/rlone"
+                    android:id="@+id/lltwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center">
 
-                    <EditText
-                        android:id="@+id/etyourcity"
+                    <TextView
+                        android:id="@+id/tvweather"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:baselineAligned="true"
-                        android:ems="10"
-                        android:hint="@string/yourcity"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weather"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-
-                        />
-
-                    <ImageView
-                        android:id="@+id/search"
-                        android:layout_width="50dp"
-                        android:layout_height="37dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/search" />
-
-                    <ImageView
-                        android:id="@+id/addbutton"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/unlike" />
                 </LinearLayout>
 
-                <LinearLayout
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/five"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
+                    android:backgroundTint="@color/trwhite"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/rlone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp">
+
+                            <EditText
+                                android:id="@+id/etyourcity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:baselineAligned="true"
+                                android:ems="10"
+                                android:hint="@string/yourcity"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/black"
+
+
+                                />
+
+                            <ImageView
+                                android:id="@+id/search"
+                                android:layout_width="50dp"
+                                android:layout_height="37dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/search" />
+
+                            <ImageView
+                                android:id="@+id/addbutton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/unlike" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:orientation="vertical">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_place"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                 />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <LinearLayout
+                    android:id="@+id/llwarning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_place"
+
+                    <TextView
+                        android:id="@+id/nodata"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="20dp" />
+                        android:textSize="15sp"
 
+
+                        />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rltwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:text="@string/temprature"
+                        android:textSize="50sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/ivicon"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/tvtemp"
+
+                        android:gravity="center"
+                        android:src="@drawable/sun" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/llfour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tvcity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:id="@+id/llwarning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/nodata"
+            <LinearLayout
+                android:id="@+id/llseven"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
 
-
-
-                />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/rltwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvtemp"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="@string/temprature"
-                android:textSize="50sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/ivicon"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/tvtemp"
-
-                android:gravity="center"
-                android:src="@drawable/sun" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/llfour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/tvcity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-
-                />
-
-            <TextView
-                android:id="@+id/tvdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/date"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llseven"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingTop="10dp">
-
-
-        <LinearLayout
-            android:id="@+id/llfive"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-
-            >
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/trwhite"
-                app:cardCornerRadius="8dp"
-
-                >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:id="@+id/llfive"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
 
-                    <ImageView
-                        android:id="@+id/ivfeelic"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:padding="10dp"
-                        android:src="@drawable/feels" />
+                    >
 
-                    <TextView
-                        android:id="@+id/tvfeel"
-                        android:layout_width="wrap_content"
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvone"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/feel"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/trwhite"
+                        app:cardCornerRadius="8dp"
 
-                    <TextView
-                        android:id="@+id/tvfeellike"
-                        android:layout_width="wrap_content"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/ivfeelic"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:padding="10dp"
+                                android:src="@drawable/feels" />
+
+                            <TextView
+                                android:id="@+id/tvfeel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/feel"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvfeellike"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/temprature"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvtwo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/temprature"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/trwhite"
+                        app:cardCornerRadius="8dp"
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        >
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvtwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/trwhite"
-                app:cardCornerRadius="8dp"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
 
-                >
+                            <ImageView
+                                android:id="@+id/ivwindic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:padding="10dp"
+                                android:src="@drawable/wind" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                            <TextView
 
-                    <ImageView
-                        android:id="@+id/ivwindic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="10dp"
-                        android:src="@drawable/wind" />
+                                android:id="@+id/tvwd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/wind"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
-                    <TextView
+                            <TextView
+                                android:id="@+id/tvwind"
 
-                        android:id="@+id/tvwd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/wind"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="km/h"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvwind"
+                        </LinearLayout>
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="km/h"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llsix"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvthree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/trwhite"
-                app:cardCornerRadius="8dp"
-
-                >
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:id="@+id/llsix"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/ivminic"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="10dp"
-                        android:src="@drawable/low" />
 
-                    <TextView
-                        android:id="@+id/tvmin"
-                        android:layout_width="wrap_content"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvthree"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/min"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/trwhite"
+                        app:cardCornerRadius="8dp"
 
-                    <TextView
-                        android:id="@+id/tvmintemp"
-                        android:layout_width="wrap_content"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/ivminic"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:padding="10dp"
+                                android:src="@drawable/low" />
+
+                            <TextView
+                                android:id="@+id/tvmin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/min"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvmintemp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/temprature"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvfour"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/temprature"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/trwhite"
+                        app:cardCornerRadius="8dp"
 
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/ivmaxic"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:padding="10dp"
+                                android:src="@drawable/fever" />
+
+                            <TextView
+                                android:id="@+id/tvmax"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/mex"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvmaxtemp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/temprature"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvfour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/trwhite"
-                app:cardCornerRadius="8dp"
-
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/ivmaxic"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="10dp"
-                        android:src="@drawable/fever" />
-
-                    <TextView
-                        android:id="@+id/tvmax"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/mex"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvmaxtemp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/temprature"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
     </ScrollView>
+</LinearLayout>

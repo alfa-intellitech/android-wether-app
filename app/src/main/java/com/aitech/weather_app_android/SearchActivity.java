@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aitech.weather_app_android.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -43,6 +42,7 @@ public class SearchActivity extends AppCompatActivity {
      String BASE_URL = "http://api.geonames.org/";
      int MAX_ROWS = 5;
      String USERNAME = "pankaj15";
+     int i=0;
 
     public    ArrayList<Geoname> geonames = new ArrayList<>();
     @SuppressLint({"MissingInflatedId", "NotifyDataSetChanged"})
@@ -93,7 +93,7 @@ recycler_place=findViewById(R.id.recycler_place);
                 }
             }
         });
-        MainActivity.dataModels=loadArrayList();
+       MainActivity.dataModels=loadArrayList();
         updatedata();
     }
 

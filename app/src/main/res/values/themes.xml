@@ -6,6 +6,6 @@
     </style>
 
     <style name="Theme.Retrofit" parent="Base.Theme.Retrofit">
-        <item name="android:statusBarColor">@color/orange</item>
+        <item name="android:statusBarColor">@color/gray</item>
     </style>
 </resources>

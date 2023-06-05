@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    ProgressBar progressbar;
 
     EditText etyourcity;
     TextView tvtemp, tvdate, tvfeellike, tvmintemp, tvmextemp, tvcity, tvwind, nodata;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Geoname> geonames = new ArrayList<>();
     private SharedPreferences sharedPreferences;
     RecyclerView recycler_place;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -80,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         recycler_place.setLayoutManager(new LinearLayoutManager(this));
         adaptor = new MyAdaptor(getApplicationContext(), dataModels);
         sharedPreferences = getSharedPreferences("PREFS", MODE_PRIVATE);
-
+        progressbar =findViewById(R.id.progressbar);
         etyourcity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
         Intent intent;
         intent = getIntent();
         Log.d("SecondActivity", "Received intent: " + getIntent().toString());
@@ -192,8 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public void GetPlace() {
@@ -259,7 +258,8 @@ public class MainActivity extends AppCompatActivity {
                 i = 0;
             }
             Referash(60000);
-        } else {
+        }
+        else {
             Log.d("TAG", "updatedata: ");
         }
 
@@ -294,8 +294,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         WeatherApi myapi = retrofit.create(WeatherApi.class);
         Call<Exp> example = myapi.GetWeather(etyourcity.getText().toString(), apikey);
-        example.enqueue(new Callback<Exp>() {
 
+        example.enqueue(new Callback<Exp>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onResponse(Call<Exp> call, Response<Exp> response) {
@@ -351,6 +351,10 @@ public class MainActivity extends AppCompatActivity {
                     tvwind.setText(String.valueOf(speed) + " km/h");
                     yourcity = etyourcity.getText().toString();
                     yourtemp = tvtemp.getText().toString();
+                    if(progressbar!=null)
+                    {
+                        progressbar.setVisibility(View.GONE);
+                    }
                     if (!(dataModels == null)) {
                         for (int i = 0; i < dataModels.size(); i++) {
                             if (yourcity.equals(dataModels.get(i).cityname)) {
@@ -380,13 +384,13 @@ public class MainActivity extends AppCompatActivity {
         int icon = 0;
         if (temprature > 37) {
             icon = R.drawable.fever;
-            home.setBackground(getDrawable(R.drawable.hot));
+            home.setBackground(getDrawable(R.drawable.orange_greadient));
         } else if (temprature <= 37 && temprature > 20) {
             icon = R.drawable.thermometer;
-            home.setBackground(getDrawable(R.drawable.sunny));
+            home.setBackground(getDrawable(R.drawable.yellow_greadient));
         } else {
             icon = R.drawable.low;
-            home.setBackground(getDrawable(R.drawable.cold));
+            home.setBackground(getDrawable(R.drawable.skyblue_greadient));
         }
         return icon;
     }

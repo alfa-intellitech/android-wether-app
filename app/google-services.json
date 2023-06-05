@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1002822583980",
+    "project_id": "the-weather-project-3437f",
+    "storage_bucket": "the-weather-project-3437f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002822583980:android:45e6e2a87ea1b25aeb0109",
+        "android_client_info": {
+          "package_name": "com.aitech.weather_app_android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNQ6WIuKM1W-kaL-tsICUdZuOjCpJt-4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
