@@ -136,14 +136,28 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle click event
+                String searchcity = etyourcity.getText().toString().trim();
+                String[]city=searchcity.split("\\s+");
 
-                if (etyourcity.getText().toString().isEmpty()) {
+                StringBuilder stringBuilder = new StringBuilder();
+
+                for (String word :city) {
+                    if (word.length() > 0) {
+                        char firstLetter = word.charAt(0); // Get the first letter of the word
+                        String modifiedWord = Character.toString(firstLetter).toUpperCase() + word.substring(1);
+                        stringBuilder.append(modifiedWord).append(" "); // Append the modified word back to the string
+                    }
+                }
+
+                searchcity = stringBuilder.toString().trim();
+                etyourcity.setText(searchcity);
+                // Handle click event
+                if (etyourcity.getText().toString().trim().isEmpty()) {
                     nodata.setText("enter city!!");
                 } else {
                     if (!(dataModels == null)) {
                         for (int i = 0; i < dataModels.size(); i++) {
-                            if (dataModels.get(i).getCityname().equals(etyourcity.getText().toString())) {
+                            if (dataModels.get(i).getCityname().equals(yourcity)) {
                                 addbutton.setImageResource(R.drawable.like);
                                 fav = true;
                                 break;
@@ -162,35 +176,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (fav) {
-                    addbutton.setImageResource(R.drawable.unlike);
-                    fav = false;
-                    if (!(dataModels == null)) {
-                        for (int i = 0; i < dataModels.size(); i++) {
-                            if (dataModels.get(i).getCityname().equals(etyourcity.getText().toString())) {
-                                dataModels.remove(i);
-                                SaveData(dataModels);
+                if (!(yourcity== null)) {
+                    if (fav) {
+                        addbutton.setImageResource(R.drawable.unlike);
+                        fav = false;
+                        if (!(dataModels == null)) {
+                            for (int i = 0; i < dataModels.size(); i++) {
+                                if (dataModels.get(i).getCityname().equals(yourcity)) {
+                                    dataModels.remove(i);
+                                    SaveData(dataModels);
+                                }
                             }
                         }
-                    }
-                } else {
-                    fav = true;
-                    addbutton.setImageResource(R.drawable.like);
-                    if(dataModels == null)
-                    {
-                        DataModel dataModel=new DataModel(etyourcity.getText().toString(),tvtemp.getText().toString());
-                        dataModels = new ArrayList<>();
-                        dataModels.add(dataModel);
-                    }
-                    else {
-                        dataModels.add(new DataModel(etyourcity.getText().toString(), tvtemp.getText().toString()));
-                    }
-                    SaveData(dataModels);
+                    } else {
+                        fav = true;
+                        addbutton.setImageResource(R.drawable.like);
+                        if (dataModels == null) {
+                            DataModel dataModel = new DataModel(yourcity, tvtemp.getText().toString());
+                            dataModels = new ArrayList<>();
+                            dataModels.add(dataModel);
+                        } else {
+                            dataModels.add(new DataModel(yourcity, tvtemp.getText().toString()));
+                        }
+                        SaveData(dataModels);
                     }
 
+                }
             }
         });
     }
@@ -206,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         WeatherApi api = retrofit.create(WeatherApi.class);
 
         // Make the API call
-        Call<Exp> call = api.MyPlace(etyourcity.getText().toString(), MAX_ROWS, USERNAME);
+        Call<Exp> call = api.MyPlace(etyourcity.getText().toString().trim(), MAX_ROWS, USERNAME);
         call.enqueue(new Callback<Exp>() {
             @Override
             public void onResponse(Call<Exp> call, Response<Exp> response) {
@@ -248,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void dataupdate() {
 
-        if (!(dataModels.isEmpty())) {
+        if ((dataModels.size()>0)) {
             yourcity = dataModels.get(i).getCityname();
             etyourcity.setText(yourcity);
             GetWeather();
@@ -293,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         WeatherApi myapi = retrofit.create(WeatherApi.class);
-        Call<Exp> example = myapi.GetWeather(etyourcity.getText().toString(), apikey);
+        Call<Exp> example = myapi.GetWeather(etyourcity.getText().toString().trim(), apikey);
 
         example.enqueue(new Callback<Exp>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -301,6 +316,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Exp> call, Response<Exp> response) {
                 if (response.code() == 404) {
                     Toast.makeText(MainActivity.this, "Please Enter A Valid City", Toast.LENGTH_SHORT).show();
+
                     // Log.i("pankaj", response.message());
                 } else if (!(response.isSuccessful())) {
                     String errorMessage = "Unknown error occurred";
@@ -342,14 +358,14 @@ public class MainActivity extends AppCompatActivity {
 
 
                     tvdate.setText(formattedDateTime);
-                    tvcity.setText(etyourcity.getText().toString() + "," + country);
+                    tvcity.setText(etyourcity.getText().toString().trim() + "," + country);
 
                     tvtemp.setText(String.valueOf(temprature) + "°c");
                     tvfeellike.setText(String.valueOf(feellike) + "°c");
                     tvmintemp.setText(String.valueOf(mintemp) + "°c");
                     tvmextemp.setText(String.valueOf(maxtemp) + "°c");
                     tvwind.setText(String.valueOf(speed) + " km/h");
-                    yourcity = etyourcity.getText().toString();
+                    yourcity = etyourcity.getText().toString().trim();
                     yourtemp = tvtemp.getText().toString();
                     if(progressbar!=null)
                     {

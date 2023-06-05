@@ -79,7 +79,20 @@ recycler_place=findViewById(R.id.recycler_place);
             ivsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                city = yourcity.getText().toString();
+                city = yourcity.getText().toString().trim();
+                String[]yourcity=city.split("\\s+");
+
+                StringBuilder stringBuilder = new StringBuilder();
+
+                for (String word :yourcity) {
+                    if (word.length() > 0) {
+                        char firstLetter = word.charAt(0); // Get the first letter of the word
+                        String modifiedWord = Character.toString(firstLetter).toUpperCase() + word.substring(1);
+                        stringBuilder.append(modifiedWord).append(" "); // Append the modified word back to the string
+                    }
+                }
+
+                city = stringBuilder.toString().trim();
                 if (city.isEmpty()) {
                     tvcity.setText("enter city!!");
                 } else {
@@ -109,7 +122,7 @@ recycler_place=findViewById(R.id.recycler_place);
         WeatherApi api = retrofit.create(WeatherApi.class);
 
         // Make the API call
-        Call<Exp> call = api.MyPlace(yourcity.getText().toString(), MAX_ROWS, USERNAME);
+        Call<Exp> call = api.MyPlace(yourcity.getText().toString().trim(), MAX_ROWS, USERNAME);
         call.enqueue(new Callback<Exp>() {
             @Override
             public void onResponse(Call<Exp> call, Response<Exp> response) {
