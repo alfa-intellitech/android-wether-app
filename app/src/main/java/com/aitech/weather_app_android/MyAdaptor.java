@@ -32,7 +32,21 @@ public class MyAdaptor extends RecyclerView.Adapter<MyViewHolder> {
         final DataModel data = dataModels.get(position);
 
         holder.cityname.setText(dataModels.get(position).getCityname());
-        holder.citytemp.setText(dataModels.get(position).getCitytemp());
+        holder.citytemp.setText(dataModels.get(position).getCitytemp()+"°c");
+        int temp=Integer.parseInt(dataModels.get(position).getCitytemp());
+        if (temp > 37) {
+
+            holder.savecity.setBackgroundResource(R.drawable.orange_greadient);
+
+        } else if (temp <= 37 && temp > 20) {
+
+            holder.savecity.setBackgroundResource(R.drawable.yellow_greadient);
+
+        } else {
+
+            holder.savecity.setBackgroundResource(R.drawable.skyblue_greadient);
+
+        }
         holder.cityname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

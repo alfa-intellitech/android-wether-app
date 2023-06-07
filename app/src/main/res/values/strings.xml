@@ -10,6 +10,6 @@
     <string name="mex">Mex. temp</string>
     <string name="wind">Wind</string>
     <string name="warning">please enter your city.......</string>
-    <string name="list">your save list</string>
+    <string name="list">Favourit</string>
 
 </resources>

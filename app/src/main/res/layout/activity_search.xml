@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/orange_greadient"
+    android:background="@drawable/background_greadient"
     android:orientation="vertical"
     tools:context=".SearchActivity">
     <ScrollView
@@ -51,45 +51,47 @@
             android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
             android:backgroundTint="@color/trwhite"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="10dp"
             >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
             <LinearLayout
                 android:id="@+id/rltwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_marginHorizontal="10dp"
-                android:paddingLeft="3dp"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-                >
+
 
 
                 <EditText
-                    android:layout_gravity="start"
                     android:id="@+id/yourcity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:baselineAligned="true"
                     android:hint="@string/yourcity"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:ems="10"
+                    android:paddingHorizontal="5dp"
+                    android:layout_weight="1"
+
                     />
 
                 <ImageView
-                    android:layout_gravity="end|center"
                     android:id="@+id/ivsearch"
                     android:layout_width="50dp"
                     android:layout_height="37dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/search"
+
+
+
 
                     />
 
@@ -105,8 +107,7 @@
                     android:id="@+id/recycler_place"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:paddingHorizontal="20dp" />
+                   />
 
             </LinearLayout>
             </LinearLayout>

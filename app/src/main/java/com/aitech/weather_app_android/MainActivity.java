@@ -38,12 +38,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     ProgressBar progressbar;
-
+Integer temprature;
     EditText etyourcity;
     TextView tvtemp, tvdate, tvfeellike, tvmintemp, tvmextemp, tvcity, tvwind, nodata;
     LinearLayout home;
     ImageView icon, search, addbutton;
-    String mycity, yourcity, yourtemp;
+    String mycity, yourcity, yourtemp,searchcity;
     int i = 0;
     String url = "https://api.openweathermap.org/data/2.5/";
     String apikey = "be7a255cfd8215e9ee4974d82ee66cb4";
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Geoname> geonames = new ArrayList<>();
     private SharedPreferences sharedPreferences;
     RecyclerView recycler_place;
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -84,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         adaptor = new MyAdaptor(getApplicationContext(), dataModels);
         sharedPreferences = getSharedPreferences("PREFS", MODE_PRIVATE);
         progressbar =findViewById(R.id.progressbar);
+
         etyourcity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,12 +136,12 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String searchcity = etyourcity.getText().toString().trim();
-                String[]city=searchcity.split("\\s+");
+                searchcity = etyourcity.getText().toString().trim();
+                String[] city = searchcity.split("\\s+");
 
                 StringBuilder stringBuilder = new StringBuilder();
 
-                for (String word :city) {
+                for (String word : city) {
                     if (word.length() > 0) {
                         char firstLetter = word.charAt(0); // Get the first letter of the word
                         String modifiedWord = Character.toString(firstLetter).toUpperCase() + word.substring(1);
@@ -155,9 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 if (etyourcity.getText().toString().trim().isEmpty()) {
                     nodata.setText("enter city!!");
                 } else {
+                    GetWeather();
                     if (!(dataModels == null)) {
                         for (int i = 0; i < dataModels.size(); i++) {
-                            if (dataModels.get(i).getCityname().equals(yourcity)) {
+                            if (searchcity.equals(dataModels.get(i).getCityname())) {
                                 addbutton.setImageResource(R.drawable.like);
                                 fav = true;
                                 break;
@@ -166,12 +167,11 @@ public class MainActivity extends AppCompatActivity {
                                 fav = false;
                             }
                         }
-                    }
-                    else {
+                    } else {
                         addbutton.setImageResource(R.drawable.unlike);
                         fav = false;
                     }
-                    GetWeather();
+
                 }
             }
         });
@@ -196,11 +196,11 @@ public class MainActivity extends AppCompatActivity {
                         fav = true;
                         addbutton.setImageResource(R.drawable.like);
                         if (dataModels == null) {
-                            DataModel dataModel = new DataModel(yourcity, tvtemp.getText().toString());
+                            DataModel dataModel = new DataModel(yourcity, temprature.toString());
                             dataModels = new ArrayList<>();
                             dataModels.add(dataModel);
                         } else {
-                            dataModels.add(new DataModel(yourcity, tvtemp.getText().toString()));
+                            dataModels.add(new DataModel(yourcity, temprature.toString()));
                         }
                         SaveData(dataModels);
                     }
@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
             yourcity = dataModels.get(i).getCityname();
             etyourcity.setText(yourcity);
             GetWeather();
-            adaptor.notifyDataSetChanged();
+
             i++;
             if (i >= dataModels.size()) {
                 i = 0;
@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Exp> call, Response<Exp> response) {
                 if (response.code() == 404) {
                     Toast.makeText(MainActivity.this, "Please Enter A Valid City", Toast.LENGTH_SHORT).show();
-
+yourcity=null;
                     // Log.i("pankaj", response.message());
                 } else if (!(response.isSuccessful())) {
                     String errorMessage = "Unknown error occurred";
@@ -346,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
                     Double speedmtr = wind.getSpeed();
 
 
-                    Integer temprature = (int) (temp - 273.15);
+                    temprature = (int) (temp - 273.15);
                     Integer feellike = (int) (feel - 273.15);
                     Integer mintemp = (int) (minimum - 273.15);
                     Integer maxtemp = (int) (maximum - 273.15);
@@ -356,17 +356,17 @@ public class MainActivity extends AppCompatActivity {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                     String formattedDateTime = dateTime.format(formatter);
 
-
+                    yourcity = etyourcity.getText().toString().trim();
                     tvdate.setText(formattedDateTime);
-                    tvcity.setText(etyourcity.getText().toString().trim() + "," + country);
+                    tvcity.setText(yourcity + "," + country);
 
                     tvtemp.setText(String.valueOf(temprature) + "°c");
                     tvfeellike.setText(String.valueOf(feellike) + "°c");
                     tvmintemp.setText(String.valueOf(mintemp) + "°c");
                     tvmextemp.setText(String.valueOf(maxtemp) + "°c");
                     tvwind.setText(String.valueOf(speed) + " km/h");
-                    yourcity = etyourcity.getText().toString().trim();
-                    yourtemp = tvtemp.getText().toString();
+
+                    yourtemp = temprature.toString();
                     if(progressbar!=null)
                     {
                         progressbar.setVisibility(View.GONE);
@@ -374,8 +374,9 @@ public class MainActivity extends AppCompatActivity {
                     if (!(dataModels == null)) {
                         for (int i = 0; i < dataModels.size(); i++) {
                             if (yourcity.equals(dataModels.get(i).cityname)) {
-                                dataModels.set(i, new DataModel(dataModels.get(i).getCityname(), yourtemp));
+                                dataModels.set(i, new DataModel(dataModels.get(i).getCityname(),yourtemp));
                                 SaveData(dataModels);
+                                adaptor.notifyDataSetChanged();
                                 Log.d("updates", yourcity + String.valueOf(i) + yourtemp);
 
                             }
@@ -401,12 +402,17 @@ public class MainActivity extends AppCompatActivity {
         if (temprature > 37) {
             icon = R.drawable.fever;
             home.setBackground(getDrawable(R.drawable.orange_greadient));
+
+
         } else if (temprature <= 37 && temprature > 20) {
             icon = R.drawable.thermometer;
             home.setBackground(getDrawable(R.drawable.yellow_greadient));
+
+
         } else {
             icon = R.drawable.low;
             home.setBackground(getDrawable(R.drawable.skyblue_greadient));
+
         }
         return icon;
     }

@@ -10,18 +10,18 @@
         android:id="@+id/llone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/orange_greadient"
+        android:background="@drawable/background_greadient"
         android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/ivsearch"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerVertical="true"
 
 
-            android:src="@drawable/appicon" />
+            android:src="@mipmap/ic_launcher" />
 
 
     </LinearLayout>
