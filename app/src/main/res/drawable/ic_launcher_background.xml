@@ -6,8 +6,8 @@
 
         android:type="linear"
         android:angle="-135"
-        android:startColor="#012340"
-        android:endColor="#04D939"
+        android:startColor="#04D939"
+        android:endColor="#012340"
 
     />
 </shape>
