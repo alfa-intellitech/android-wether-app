@@ -47,7 +47,6 @@
 
                 </LinearLayout>
 
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/five"
                     android:layout_width="match_parent"
