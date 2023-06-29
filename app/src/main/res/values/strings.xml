@@ -5,8 +5,8 @@
     <string name="temprature"> °c</string>
     <string name="date">Date</string>
     <string name="results">Weather Results</string>
-    <string name="feel">Feel like</string>
-    <string name="min">Min. temp</string>
+    <string name="feel">Feel Like</string>
+    <string name="min">Min. Temp</string>
     <string name="max">Max. temp</string>
     <string name="wind">Wind</string>
     <string name="warning">please enter your city.......</string>
@@ -48,6 +48,6 @@
     \n\n
     **Download "The Weather App" now and embark on your Android development adventure!**
     </string>
-    <string name="githublink">github</string>
-    <string name="apilink">data provided by</string>
+    <string name="githublink">Github</string>
+    <string name="apilink">Data Provided by</string>
 </resources>
