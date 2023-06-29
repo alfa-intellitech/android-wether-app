@@ -58,26 +58,29 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="vertical"
-                        >
+                        android:padding="10dp">
+
                         <LinearLayout
                             android:id="@+id/rlone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:orientation="horizontal">
+
                             <EditText
                                 android:id="@+id/etyourcity"
                                 android:layout_width="0dp"
                                 android:layout_height="48dp"
+                                android:layout_weight="1"
                                 android:baselineAligned="true"
+                                android:ems="10"
+                                android:inputType="text"
+                                android:imeOptions="actionSearch"
                                 android:hint="@string/yourcity"
+                                android:paddingHorizontal="5dp"
                                 android:textColor="@color/black"
                                 android:textColorHint="@color/black"
-                                android:ems="10"
-                                android:paddingHorizontal="5dp"
-                                android:layout_weight="1"
 
                                 />
 
@@ -86,13 +89,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="37dp"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/search" />
+                                android:layout_gravity="center"
+                                android:src="@drawable/search"
+
+                                />
 
                             <ImageView
                                 android:id="@+id/addbutton"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center"
                                 android:src="@drawable/unlike" />
                         </LinearLayout>
 
@@ -106,8 +113,7 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recycler_place"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                 />
+                                android:layout_height="wrap_content" />
 
                         </LinearLayout>
 
@@ -120,27 +126,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center" />
-
-                <LinearLayout
-                    android:id="@+id/llwarning"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:id="@+id/nodata"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-
-
-                        />
-                </LinearLayout>
 
                 <RelativeLayout
                     android:id="@+id/rltwo"
@@ -248,8 +233,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:text="@string/feel"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                                android:textSize="18sp"
+                                />
+                            <!--                                android:textStyle="bold" -->
 
                             <TextView
                                 android:id="@+id/tvfeellike"
@@ -296,8 +282,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:text="@string/wind"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                                android:textSize="18sp"
+                                />
+                            <!--                                android:textStyle="bold" -->
 
                             <TextView
                                 android:id="@+id/tvwind"
@@ -354,8 +341,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:text="@string/min"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                                android:textSize="18sp"
+                                />
+                            <!--                                android:textStyle="bold"-->
 
                             <TextView
                                 android:id="@+id/tvmintemp"
@@ -400,9 +388,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="@string/mex"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                                android:text="@string/max"
+                                android:textSize="18sp"
+                                />
+                            <!--                                android:textStyle="bold"-->
 
                             <TextView
                                 android:id="@+id/tvmaxtemp"
@@ -416,6 +405,70 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lleight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cveight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/trwhite"
+                        app:cardCornerRadius="8dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:orientation="vertical">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycle_daily"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/rlfour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+android:layout_margin="10dp"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/api"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/apilink"
+                        android:textSize="12sp"
+                        android:layout_marginRight="5dp"
+                        android:layout_centerVertical="true"
+                         />
+
+                    <TextView
+                        android:id="@+id/dataprovider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/api"
+android:textColor="@color/white"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="OpenWeather" />
+                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

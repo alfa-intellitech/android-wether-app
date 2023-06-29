@@ -15,5 +15,12 @@ public interface WeatherApi {
             @Query("maxRows") int maxRows,
             @Query("username") String username
     );
+    @GET("forecast")
+    Call<WeatherForecastResponse> getWeatherForecast(
+            @Query("q") String location,
+            @Query("appid") String apiKey,
+            @Query("units") String units,
+            @Query("cnt") int count
+    );
 
 }

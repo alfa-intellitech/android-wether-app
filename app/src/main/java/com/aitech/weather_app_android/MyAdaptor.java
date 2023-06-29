@@ -47,7 +47,7 @@ public class MyAdaptor extends RecyclerView.Adapter<MyViewHolder> {
             holder.savecity.setBackgroundResource(R.drawable.skyblue_greadient);
 
         }
-        holder.cityname.setOnClickListener(new View.OnClickListener() {
+        holder.savecity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, MainActivity.class);
@@ -58,9 +58,6 @@ public class MyAdaptor extends RecyclerView.Adapter<MyViewHolder> {
         });
 
     }
-
-
-
     @Override
     public int getItemCount() {
         if (dataModels == null)

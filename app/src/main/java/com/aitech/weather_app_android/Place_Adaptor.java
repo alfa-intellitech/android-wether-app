@@ -20,6 +20,7 @@ public  class Place_Adaptor extends RecyclerView.Adapter<Place_Holder>{
         this.geonames = geonames;
     }
 
+
     @NonNull
     @Override
     public Place_Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

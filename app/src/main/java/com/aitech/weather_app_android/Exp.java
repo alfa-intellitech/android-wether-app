@@ -14,6 +14,7 @@ public class Exp {
 
     private List<Geoname> geonames;
 
+
     public List<Geoname> getGeonames() {
         return geonames;
     }
@@ -40,4 +41,6 @@ public class Exp {
     public void setMain(Main main) {
         this.main = main;
     }
+
+
 }
